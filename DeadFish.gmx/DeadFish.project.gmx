@@ -15,6 +15,19 @@
     <sprite>sprites\spr_press</sprite>
     <sprite>sprites\spr_agua</sprite>
     <sprite>sprites\spr_montana</sprite>
+    <sprites name="Peces">
+      <sprite>sprites\spr_pez_rosado</sprite>
+      <sprite>sprites\spr_pez_amarillo</sprite>
+      <sprite>sprites\spr_pez_azul</sprite>
+      <sprite>sprites\spr_pez_boss</sprite>
+      <sprite>sprites\spr_pez_morado</sprite>
+      <sprite>sprites\spr_pez_naranja</sprite>
+      <sprite>sprites\spr_pez_verde</sprite>
+      <sprite>sprites\spr_pez_suertge</sprite>
+      <sprite>sprites\spr_hongo</sprite>
+      <sprite>sprites\sprite12</sprite>
+      <sprite>sprites\spr_salir</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\background_menu</background>
