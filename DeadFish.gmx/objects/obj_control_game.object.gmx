@@ -26,11 +26,9 @@
           <argument>
             <kind>1</kind>
             <string>if(room == Room_Presentation){
-    globalvar best_puntaje, puntaje, vidas, municion, mejora_arma, tiempo;
+    globalvar puntaje, vidas, municion, mejora_arma, tiempo;
     
-    idioma = "es";
-    best_puntaje = 0; // Esta variable almacena el mejor puntaje
-    puntaje = 0; // Puntaje normal.
+    puntaje = 0; 
     vidas = 0; // Comprar vidas.
     
     mejora_arma = false; // Booleano de si compro la mejora del arma o no.
@@ -38,47 +36,8 @@
     
     tiempo = 0; // Cuantas paradas de tiempo tiene.
     
-    // Cargar Datos.
-    if(file_exists(working_directory + "best_score.sav")){
-        ini_open(working_directory + "best_score.sav");
-        best_puntaje = ini_read_real("best","pass",0);
-        ini_close();
-    }
-    
-    if(file_exists(working_directory + "idioma.sav")){
-        
-    }
-    
-   // Cargar y Activar los productos.   
-   var productList = ds_list_create();
-  
-   var pVidas = ds_map_create(); 
-   ds_map_add(pNoAds, "id", "noads");
-   ds_map_add(pNoAds, "title", "No Ads");
-   ds_map_add(pNoAds, "type", "Durable");
-    
-   var pArma = ds_map_create();
-   ds_map_add(pNoAds, "id", "noads");
-   ds_map_add(pNoAds, "title", "No Ads");
-   ds_map_add(pNoAds, "type", "Durable");
-   
-   var pTiempo = ds_map_create();
-   ds_map_add(pNoAds, "id", "noads");
-   ds_map_add(pNoAds, "title", "No Ads");
-   ds_map_add(pNoAds, "type", "Durable");
-      
-   ds_list_add(productList, pVidas);
-   ds_list_add(productList, pArma);
-   ds_list_add(productList, pTiempo);
-   iap_activate(productList);
-   
-   ds_map_destroy(pVidas);
-   ds_map_destroy(pArma);
-   ds_map_destroy(pTiempo);
-   ds_list_destroy(productList);
-    
-   audio_play_sound(sound_music,1,1);
-   alarm[0] = 40;
+    audio_play_sound(sound_music,1,1);
+    alarm[0] = 40;
 }
 </string>
           </argument>
