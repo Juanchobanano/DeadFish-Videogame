@@ -126,21 +126,24 @@ phy_speed_y = irandom_range(-15 - puntaje/10,-10 - puntaje/10);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>puntos = false;
-if(puntaje &gt; best_puntaje){
-    best_puntaje = puntaje;
-    if(file_exists(working_directory + "best_score.sav")){
-        file_delete(working_directory + "best_score.sav");
+            <string>if(puntos){
+    with(obj_generar_peces){
+        alarm[0] = -1;
     }
-    
-    ini_open(working_directory + "best_score.sav");
-    ini_write_real("best","pass",puntaje);
-    ini_close();
+    puntos = false;
+    if(puntaje &gt; best_puntaje){
+        best_puntaje = puntaje;
+        if(file_exists(working_directory + "best_score.sav")){
+            file_delete(working_directory + "best_score.sav");
+        }
+        
+        ini_open(working_directory + "best_score.sav");
+        ini_write_real("best","pass",puntaje);
+        ini_close();
+    }
+    instance_create(room_width/2 - sprite_get_width(spr_gameover)/2,290,obj_gameover);
+    alarm[0] = 15;
 }
-instance_create(room_width/2 - sprite_get_width(spr_gameover)/2,290,obj_gameover);
-alarm[0] = 15;
-
-
 instance_destroy();
 </string>
           </argument>
