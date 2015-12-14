@@ -53,12 +53,9 @@ image_speed = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>puntaje = 0;
+            <string>audio_play_sound(sound_click,1,0);
+puntaje = 0;
 src_trans(Room_Game);
-
-/* GUARDAR DATOS */ 
-
-
 </string>
           </argument>
         </arguments>

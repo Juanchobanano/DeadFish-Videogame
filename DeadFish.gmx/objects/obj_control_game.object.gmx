@@ -45,9 +45,14 @@
         ini_close();
     }
     
+    // Cargar Idioma.
     if(file_exists(working_directory + "idioma.sav")){
-        
+        ini_open(working_directory + "idioma.sav");
+        idioma = ini_read_real("idioma","pass",0);
+        ini_close();
     }
+    
+    
     
    // Cargar y Activar los productos.   
    var productList = ds_list_create();
@@ -127,6 +132,7 @@
             <kind>1</kind>
             <string>if(room == Room_Menu){
     src_trans(Room_Game);
+    audio_play_sound(sound_click,1,0);
 }
 </string>
           </argument>
@@ -166,6 +172,7 @@
 }
 
 if(comprar){
+    audio_play_sound(sound_click,1,0);
     comprar = 0;
     if(iap_status() == iap_status_available){
        iap_acquire(product, ""); // Evento A.
