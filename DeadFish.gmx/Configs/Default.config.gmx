@@ -71,7 +71,7 @@
     <option_android_portrait_splash_png>Configs\Default\android\portrait_splash.png</option_android_portrait_splash_png>
     <option_android_push_enable>0</option_android_push_enable>
     <option_android_push_id></option_android_push_id>
-    <option_android_scale>-1</option_android_scale>
+    <option_android_scale>0</option_android_scale>
     <option_android_set_device_id></option_android_set_device_id>
     <option_android_splash_png>Configs\Default\android\splash.png</option_android_splash_png>
     <option_android_splash_time>0</option_android_splash_time>
@@ -414,7 +414,7 @@
     <option_quitkey>true</option_quitkey>
     <option_resolution>0</option_resolution>
     <option_savekey>true</option_savekey>
-    <option_scale>-1</option_scale>
+    <option_scale>0</option_scale>
     <option_scaleprogress>true</option_scaleprogress>
     <option_sci_UseSCI>0</option_sci_UseSCI>
     <option_sci_serverLocation></option_sci_serverLocation>

@@ -8,18 +8,18 @@
   <sepmasks>0</sepmasks>
   <bboxmode>0</bboxmode>
   <bbox_left>0</bbox_left>
-  <bbox_right>74</bbox_right>
+  <bbox_right>309</bbox_right>
   <bbox_top>0</bbox_top>
-  <bbox_bottom>70</bbox_bottom>
+  <bbox_bottom>192</bbox_bottom>
   <HTile>0</HTile>
   <VTile>0</VTile>
   <TextureGroups>
     <TextureGroup0>0</TextureGroup0>
   </TextureGroups>
   <For3D>0</For3D>
-  <width>75</width>
-  <height>71</height>
+  <width>310</width>
+  <height>193</height>
   <frames>
-    <frame index="0">images\spr_pez_azul_0.png</frame>
+    <frame index="0">images\spr_gameover_0.png</frame>
   </frames>
 </sprite>
