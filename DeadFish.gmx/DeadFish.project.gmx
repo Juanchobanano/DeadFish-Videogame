@@ -28,6 +28,8 @@
       <sprite>sprites\spr_gameover</sprite>
       <sprite>sprites\spr_salir</sprite>
     </sprites>
+    <sprite>sprites\spr_continue</sprite>
+    <sprite>sprites\spr_retry</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background_pres</background>
@@ -52,6 +54,8 @@
     <object>objects\obj_agua</object>
     <object>objects\obj_press</object>
     <object>objects\obj_pez</object>
+    <object>objects\obj_retry</object>
+    <object>objects\obj_continue</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\Room_Presentation</room>
