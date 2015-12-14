@@ -47,6 +47,7 @@
   <objects name="objects">
     <objects name="Control">
       <object>objects\obj_fadein</object>
+      <object>objects\obj_generar_peces</object>
       <object>objects\obj_fadeout</object>
       <object>objects\obj_control_game</object>
     </objects>
