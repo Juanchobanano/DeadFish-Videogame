@@ -30,10 +30,10 @@
     </sprites>
   </sprites>
   <backgrounds name="background">
-    <background>background\background_menu</background>
     <background>background\background_pres</background>
+    <background>background\background_menu</background>
+    <background>background\background_juego</background>
     <background>background\background_final</background>
-    <background>background\background3</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
