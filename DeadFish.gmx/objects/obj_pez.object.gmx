@@ -27,7 +27,13 @@
             <kind>1</kind>
             <string>puntos = true;
 //En la posición que tiene inicial inicia el movimiento con una velocidad
-image_index = irandom_range(0,5);
+if (irandom_range(0,1000) == 1) {
+    image_index = 6;
+}
+else
+{
+    image_index = irandom_range(0,5);
+}
 image_speed = 0;
 
 if (x &lt; 0){
@@ -127,7 +133,6 @@ phy_speed_y = irandom_range(-15 - puntaje/10,-10 - puntaje/10);
           <argument>
             <kind>1</kind>
             <string>if(puntos){
-    // Detener alarma de peces.
     with(obj_generar_peces){
         alarm[0] = -1;
     }
