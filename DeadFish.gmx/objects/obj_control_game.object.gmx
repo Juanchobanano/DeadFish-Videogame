@@ -133,6 +133,106 @@
         </arguments>
       </action>
     </event>
+    <event eventtype="6" enumb="4">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if(room == Room_Final){
+    if((mouse_y &gt;= 554 and mouse_y &lt;= 785) and mouse_check_button_pressed(mb_left)){
+        // Tiempo.
+        if(mouse_x &gt;= 199 and mouse_x &lt;= 158){
+            var product = "deadfish_tiempo"; comprar = 1;
+        // Vidas.
+        }else if(mouse_x &gt;= 168 and mouse_x &lt;= 311){
+            var product = "deadfish_vidas"; comprar = 1;
+        // Arma.
+        }else if(mouse_x &gt;= 322 and mouse_x &lt;= 458){
+            var product = "deadfish_arma"; comprar = 1;
+        }
+    }
+}
+
+if(comprar){
+    comprar = 0;
+    if(iap_status() == iap_status_available){
+       iap_acquire(product, ""); // Evento A.
+    }else{
+       if(idioma == "en"){
+          show_message_async("Store is not available.");
+       }else if(idioma == "es"){
+          show_message_async("La tienda no está disponible.");
+       }
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="66">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>var val = ds_map_find_value(iap_data, "type");
+switch(val){
+   case iap_ev_purchase:
+      var map = ds_map_create();
+      var purchase_id = ds_map_find_value(iap_data, "index");
+      iap_purchase_details(purchase_id, map);
+      if(ds_map_find_value(map, "status") == iap_purchased){
+          var product_id = ds_map_find_value(map, "product");
+          iap_consume(product_id);
+      }
+      ds_map_destroy(map);
+   break;
+   case iap_ev_consume:
+      var product_id = ds_map_find_value(map, "product");
+      if(ds_map_find_value(iap_data, "consumed")){
+        switch(product_id){
+            case "deadfish_vidas":
+                global.vidas += 10; // Aumentar la cantidad de vidas.
+            break;
+            case "deadfish_tiempo":
+                global.tiempo += 10; // Aumentar la cantidad de vidas.
+            break;
+            case "deadfish_arma":
+                global.municion += 200; // Aumentar la cantidad de vidas.
+            break;
+        }
+      }
+   break;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="8" enumb="0">
       <action>
         <libid>1</libid>
