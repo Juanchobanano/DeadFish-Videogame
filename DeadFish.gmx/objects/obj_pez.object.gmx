@@ -127,6 +127,7 @@ phy_speed_y = irandom_range(-15 - puntaje/10,-10 - puntaje/10);
           <argument>
             <kind>1</kind>
             <string>if(puntos){
+    // Detener alarma de peces.
     with(obj_generar_peces){
         alarm[0] = -1;
     }

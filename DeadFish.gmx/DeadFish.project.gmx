@@ -30,6 +30,7 @@
     <background>background\background_menu</background>
     <background>background\background_juego</background>
     <background>background\background_final</background>
+    <background>background\background_boss</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
