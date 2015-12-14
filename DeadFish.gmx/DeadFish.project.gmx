@@ -39,6 +39,9 @@
   <scripts name="scripts">
     <script>scripts\src_trans.gml</script>
   </scripts>
+  <fonts name="fonts">
+    <font>fonts\font_juego_35</font>
+  </fonts>
   <objects name="objects">
     <objects name="Control">
       <object>objects\obj_fadein</object>

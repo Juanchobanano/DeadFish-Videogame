@@ -26,7 +26,15 @@
           <argument>
             <kind>1</kind>
             <string>if(room == Room_Presentation){
-    globalvar puntaje;
+    globalvar puntaje, vidas, municion, mejora_arma, tiempo;
+    
+    puntaje = 0; 
+    vidas = 0; // Comprar vidas.
+    
+    mejora_arma = false; // Booleano de si compro la mejora del arma o no.
+    municion = 0; // Cuanta municion tiene del arma mejorada.
+    
+    tiempo = 0; // Cuantas paradas de tiempo tiene.
     
     audio_play_sound(sound_music,1,1);
     alarm[0] = 40;
@@ -59,6 +67,31 @@
         </arguments>
       </action>
     </event>
+    <event eventtype="6" enumb="50">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if(room == Room_Menu){
+    src_trans(Room_Game);
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="8" enumb="0">
       <action>
         <libid>1</libid>
@@ -78,6 +111,9 @@
             <kind>1</kind>
             <string>if(room == Room_Game){
     // Dibujar el Score.
+    draw_set_color(c_black);
+    draw_set_font(font_juego_35);
+    draw_text(room_width/2 - string_width(string(puntaje))/2, 100, string(puntaje));
 }
 </string>
           </argument>

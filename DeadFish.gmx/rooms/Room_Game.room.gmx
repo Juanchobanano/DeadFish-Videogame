@@ -52,6 +52,7 @@
   </views>
   <instances>
     <instance objName="obj_pez" x="168" y="387" name="inst_95156476" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_fadein" x="23" y="96" name="inst_E2B3877C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>
