@@ -5,15 +5,39 @@
   </Configs>
   <NewExtensions/>
   <sounds name="sound">
-    <sound>sound\sound_click</sound>
-    <sound>sound\sound_mushroom</sound>
-    <sound>sound\sound_music</sound>
-    <sound>sound\sound_weapon</sound>
-    <sound>sound\sound_time</sound>
+    <sound>sound\sound0</sound>
   </sounds>
-  <sprites name="sprites"/>
-  <backgrounds name="background"/>
+  <sprites name="sprites">
+    <sprite>sprites\spr_press</sprite>
+    <sprite>sprites\spr_agua</sprite>
+    <sprite>sprites\spr_montana</sprite>
+  </sprites>
+  <backgrounds name="background">
+    <background>background\background_menu</background>
+    <background>background\background_pres</background>
+    <background>background\background_final</background>
+    <background>background\background3</background>
+  </backgrounds>
   <paths name="paths"/>
+  <scripts name="scripts">
+    <script>scripts\src_trans.gml</script>
+  </scripts>
+  <objects name="objects">
+    <objects name="Control">
+      <object>objects\obj_fadein</object>
+      <object>objects\obj_fadeout</object>
+      <object>objects\obj_control_game</object>
+    </objects>
+    <object>objects\obj_montana</object>
+    <object>objects\obj_agua</object>
+    <object>objects\obj_press</object>
+  </objects>
+  <rooms name="rooms">
+    <room>rooms\Room_Presentation</room>
+    <room>rooms\Room_Menu</room>
+    <room>rooms\Room_Game</room>
+    <room>rooms\Room_Final</room>
+  </rooms>
   <help>
     <rtf>help.rtf</rtf>
   </help>
