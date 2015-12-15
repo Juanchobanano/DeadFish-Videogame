@@ -26,7 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>if(room == Room_Presentation){
-    globalvar best_puntaje, puntaje, vidas, municion, mejora_arma, tiempo, idioma;
+    globalvar best_puntaje, puntaje, vidas, municion, mejora_arma, tiempo, idioma, pausa, congelar;
     
     idioma = "es";
     best_puntaje = 0; // Esta variable almacena el mejor puntaje
@@ -37,6 +37,10 @@
     municion = 0; // Cuanta municion tiene del arma mejorada.
     
     tiempo = 0; // Cuantas paradas de tiempo tiene.
+    
+    pausa = false; //Indica si se está en pausa
+    
+    congelar = false; //Indica si está utilizando una parada de tiempo
     
     // Cargar Datos.
     if(file_exists(working_directory + "best_score.sav")){
@@ -90,6 +94,32 @@
         </arguments>
       </action>
     </event>
+    <event eventtype="2" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>with(obj_generar_peces){
+    alarm[0]=30
+}
+congelar = false;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="2" enumb="0">
       <action>
         <libid>1</libid>
@@ -108,6 +138,31 @@
           <argument>
             <kind>1</kind>
             <string>src_trans(Room_Menu);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="5" enumb="77">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if(!congelar){
+    congelar = true
+}
 </string>
           </argument>
         </arguments>

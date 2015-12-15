@@ -116,6 +116,10 @@ if instance_number(obj_pez) &lt; 8{
 }else if(puntaje &gt;= 100){
     
 }
+if(congelar){
+    alarm[0] = -1;
+    //alarm[1] = -1;
+}
 </string>
           </argument>
         </arguments>
