@@ -27,9 +27,12 @@
             <kind>1</kind>
             <string>if(!pausar_juego){
     pausar_juego = 1;
+    image_index = 0;
 }else{
     pausar_juego = 0;   
+    image_index = 1;
 }
+image_speed = 0;
 </string>
           </argument>
         </arguments>

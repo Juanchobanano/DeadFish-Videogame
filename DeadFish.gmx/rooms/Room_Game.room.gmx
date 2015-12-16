@@ -56,14 +56,14 @@
     <instance objName="obj_agua" x="1" y="755" name="inst_9EAA3B86" locked="0" code="" scaleX="1.09174311161041" scaleY="1.07500004768372" colour="4294967295" rotation="0"/>
     <instance objName="obj_opciones" x="1" y="0" name="inst_51FA7BB9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_pausar" x="10" y="6" name="inst_5E7AA498" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_arma" x="240" y="35" name="inst_047F07B7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_reloj" x="104" y="37" name="inst_B1AFC6A2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_vida" x="158" y="28" name="inst_28ECD601" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_arma" x="240" y="23" name="inst_047F07B7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_reloj" x="101" y="25" name="inst_B1AFC6A2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_vida" x="162" y="27" name="inst_28ECD601" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_tienda" x="349" y="5" name="inst_A042E1C7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_musica" x="416" y="4" name="inst_3F5C3FBE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
-  <PhysicsWorld>-1</PhysicsWorld>
+  <PhysicsWorld>0</PhysicsWorld>
   <PhysicsWorldTop>0</PhysicsWorldTop>
   <PhysicsWorldLeft>0</PhysicsWorldLeft>
   <PhysicsWorldRight>1024</PhysicsWorldRight>

@@ -52,7 +52,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(vidas &gt; 0){
+            <string>draw_self();
+if(vidas &gt; 0){
     draw_set_color(c_white);
 }else{
     draw_set_color(c_red);

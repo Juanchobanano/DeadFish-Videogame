@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_set_color(c_white);
+            <string>draw_self();
+draw_set_color(c_red);
 draw_set_font(font_juego_15);
 draw_text(x,y,string(municion)); 
 </string>

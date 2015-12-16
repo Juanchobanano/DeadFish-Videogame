@@ -37,7 +37,6 @@
       <sprite>sprites\spr_reloj</sprite>
       <sprite>sprites\spr_tienda</sprite>
     </sprites>
-    <sprite>sprites\sprite23</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background_pres</background>
@@ -57,8 +56,9 @@
     </scripts>
   </scripts>
   <fonts name="fonts">
-    <font>fonts\font_juego_35</font>
     <font>fonts\font_juego_70</font>
+    <font>fonts\font_juego_35</font>
+    <font>fonts\font_juego_38</font>
     <font>fonts\font_juego_15</font>
   </fonts>
   <objects name="objects">
@@ -78,7 +78,6 @@
     <object>objects\obj_retry</object>
     <object>objects\obj_continue</object>
     <object>objects\obj_gameover</object>
-    <object>objects\obj_pausa</object>
     <object>objects\obj_facebook</object>
     <object>objects\obj_twitter</object>
     <object>objects\obj_new</object>

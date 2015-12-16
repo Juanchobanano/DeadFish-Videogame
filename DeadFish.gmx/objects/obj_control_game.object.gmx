@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>if(room == Room_Presentation){
     globalvar best_puntaje, puntaje, vidas, municion, mejora_arma, tiempo, idioma, 
-              pausa, congelar, pausar_musica, pausar_juego, new, purchaseMap;
+              pausa, congelar, pausar_musica, pausar_juego, new, purchaseMap, valores;
               
     new = 0;
     pausar_musica = 0;
@@ -62,11 +62,15 @@
         ini_close();
     }
     
-    
+    valores = ds_list_create();
     purchaseMap = ds_map_create();
-    if(file_exists(working_directory + "tienda.sav")){
-        purchaseMap = ds_map_secure_load(working_directory + "tienda.sav");
-        
+    if(file_exists(working_directory + 'iap_data.json')){
+        global.purchaseMap = ds_map_secure_load("iap_data.json");
+        // Cargue los productos comprados.
+        if(ds_map_exists(global.purchaseMap,"valores")){
+            var str = ds_map_find_value(global.purchaseMap,"valores");
+            ds_list_read(valores,str);
+        }
     }
     
     
@@ -304,6 +308,47 @@ switch(val){
       }
    break;
 }
+
+// Modifique el arreglo.
+ds_list_replace(valores,0,tiempo);
+ds_list_replace(valores,1,vidas);
+ds_list_replace(valores,2,municion);
+
+// Guardar datos.
+if(file_exists("iap_data.json")){ file_delete("iap_data.json"); }
+ds_map_add(global.purchaseMap,"valores",ds_list_write(valores));
+ds_map_secure_save(global.purchaseMap, "iap_data.json");
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="3">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>// Modifique el arreglo.
+ds_list_replace(valores,0,tiempo);
+ds_list_replace(valores,1,vidas);
+ds_list_replace(valores,2,municion);
+
+// Guardar datos.
+if(file_exists("iap_data.json")){ file_delete("iap_data.json"); }
+ds_map_add(global.purchaseMap,"valores",ds_list_write(valores));
+ds_map_secure_save(global.purchaseMap, "iap_data.json");
 </string>
           </argument>
         </arguments>
@@ -326,19 +371,17 @@ switch(val){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(room == Room_Game){
+            <string>draw_set_color(make_color_rgb(51,51,51));
+if(room == Room_Game){
     // Dibujar el Score.
-    draw_set_color(c_black);
     draw_set_font(font_juego_35);
     draw_text(room_width/2 - string_width(string(puntaje))/2, 100, string(puntaje));
 }else if(room == Room_Final){
     // Dibujar el Score.
-    draw_set_color(c_black);
     draw_set_font(font_juego_70);
-    draw_text(room_width/2 - string_width(string(puntaje))/2, 120, string(puntaje));
-    draw_set_font(font_juego_35);
-    draw_text(room_width/2 - string_width(string(best_puntaje))/2, 284, string(best_puntaje));
-    
+    draw_text(room_width/2 - string_width(string(puntaje))/2, 108, string(puntaje));
+    draw_set_font(font_juego_38);
+    draw_text(room_width/2 - string_width(string(best_puntaje))/2, 270, string(best_puntaje))
 }
 </string>
           </argument>
