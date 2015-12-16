@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>if(room == Room_Presentation){
     globalvar best_puntaje, puntaje, vidas, municion, mejora_arma, tiempo, idioma, 
-              pausa, congelar, pausar_musica, pausar_juego, new;
+              pausa, congelar, pausar_musica, pausar_juego, new, purchaseMap;
               
     new = 0;
     pausar_musica = 0;
@@ -61,6 +61,14 @@
         idioma = ini_read_real("idioma","pass",0);
         ini_close();
     }
+    
+    
+    purchaseMap = ds_map_create();
+    if(file_exists(working_directory + "tienda.sav")){
+        purchaseMap = ds_map_secure_load(working_directory + "tienda.sav");
+        
+    }
+    
     
     
     
