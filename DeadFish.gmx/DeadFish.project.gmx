@@ -28,6 +28,16 @@
     <sprite>sprites\spr_facebook</sprite>
     <sprite>sprites\spr_twitter</sprite>
     <sprite>sprites\spr_new</sprite>
+    <sprite>sprites\spr_opciones</sprite>
+    <sprites name="Opciones">
+      <sprite>sprites\spr_arma</sprite>
+      <sprite>sprites\spr_pausa</sprite>
+      <sprite>sprites\spr_musica</sprite>
+      <sprite>sprites\spr_vida</sprite>
+      <sprite>sprites\spr_reloj</sprite>
+      <sprite>sprites\spr_tienda</sprite>
+    </sprites>
+    <sprite>sprites\sprite23</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background_pres</background>
@@ -49,6 +59,7 @@
   <fonts name="fonts">
     <font>fonts\font_juego_35</font>
     <font>fonts\font_juego_70</font>
+    <font>fonts\font_juego_15</font>
   </fonts>
   <objects name="objects">
     <object>objects\obj_congelar</object>
@@ -71,6 +82,15 @@
     <object>objects\obj_facebook</object>
     <object>objects\obj_twitter</object>
     <object>objects\obj_new</object>
+    <objects name="Opciones">
+      <object>objects\obj_arma</object>
+      <object>objects\obj_musica</object>
+      <object>objects\obj_reloj</object>
+      <object>objects\obj_tienda</object>
+      <object>objects\obj_pausar</object>
+      <object>objects\obj_vida</object>
+      <object>objects\obj_opciones</object>
+    </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\Room_Presentation</room>
