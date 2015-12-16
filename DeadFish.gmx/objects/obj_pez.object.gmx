@@ -206,7 +206,7 @@ phy_speed_y = vely;
     }
     puntos = false;
     if(puntaje &gt; best_puntaje){
-        best_puntaje = puntaje;
+        best_puntaje = puntaje; new = 1;
         if(file_exists(working_directory + "best_score.sav")){
             file_delete(working_directory + "best_score.sav");
         }
@@ -216,6 +216,7 @@ phy_speed_y = vely;
         ini_close();
     }
     instance_create(room_width/2 - sprite_get_width(spr_gameover)/2,290,obj_gameover);
+    
     alarm[0] = 15;
 }
 instance_destroy();

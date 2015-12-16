@@ -26,8 +26,12 @@
           <argument>
             <kind>1</kind>
             <string>if(room == Room_Presentation){
-    globalvar best_puntaje, puntaje, vidas, municion, mejora_arma, tiempo, idioma, pausa, congelar;
-    
+    globalvar best_puntaje, puntaje, vidas, municion, mejora_arma, tiempo, idioma, 
+              pausa, congelar, pausar_musica, pausar_juego, new;
+              
+    new = 0;
+    pausar_musica = 0;
+    pausar_juego = 0;
     idioma = "es";
     best_puntaje = 0; // Esta variable almacena el mejor puntaje
     puntaje = 0; // Puntaje normal.
@@ -41,6 +45,8 @@
     pausa = false; //Indica si se está en pausa
     
     congelar = false; //Indica si está utilizando una parada de tiempo
+    
+    instance_create(0,0,obj_Facebook_Init);
     
     // Cargar Datos.
     if(file_exists(working_directory + "best_score.sav")){
@@ -317,6 +323,14 @@ switch(val){
     draw_set_color(c_black);
     draw_set_font(font_juego_35);
     draw_text(room_width/2 - string_width(string(puntaje))/2, 100, string(puntaje));
+}else if(room == Room_Final){
+    // Dibujar el Score.
+    draw_set_color(c_black);
+    draw_set_font(font_juego_70);
+    draw_text(room_width/2 - string_width(string(puntaje))/2, 120, string(puntaje));
+    draw_set_font(font_juego_35);
+    draw_text(room_width/2 - string_width(string(best_puntaje))/2, 284, string(best_puntaje));
+    
 }
 </string>
           </argument>

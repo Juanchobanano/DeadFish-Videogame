@@ -24,6 +24,9 @@
     </sprites>
     <sprite>sprites\spr_continue</sprite>
     <sprite>sprites\spr_retry</sprite>
+    <sprite>sprites\spr_facebook</sprite>
+    <sprite>sprites\spr_twitter</sprite>
+    <sprite>sprites\spr_new</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background_pres</background>
@@ -38,6 +41,7 @@
   </scripts>
   <fonts name="fonts">
     <font>fonts\font_juego_35</font>
+    <font>fonts\font_juego_70</font>
   </fonts>
   <objects name="objects">
     <object>objects\obj_congelar</object>
@@ -46,6 +50,7 @@
       <object>objects\obj_generar_peces</object>
       <object>objects\obj_fadeout</object>
       <object>objects\obj_control_game</object>
+      <object>objects\obj_Facebook_Init</object>
     </objects>
     <object>objects\obj_montana</object>
     <object>objects\obj_agua</object>
@@ -55,6 +60,9 @@
     <object>objects\obj_continue</object>
     <object>objects\obj_gameover</object>
     <object>objects\obj_pausa</object>
+    <object>objects\obj_facebook</object>
+    <object>objects\obj_twitter</object>
+    <object>objects\obj_new</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\Room_Presentation</room>
