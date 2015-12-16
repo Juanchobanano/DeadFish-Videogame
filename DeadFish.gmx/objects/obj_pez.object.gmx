@@ -26,11 +26,12 @@
           <argument>
             <kind>1</kind>
             <string>puntos = true;
-velx = 0;
-vely = 0;
-posx = 0;
-posy = 0;
-//En la posición que tiene inicial inicia el movimiento con una velocidad
+
+// Movimiento
+pst_x = x; //guarda posicion inicial x
+    initialize_movement_entity(.5, 1, .125, .25,obj_gravedad); //Inicializa los parametros de movimiento
+alarm[1] = 1;
+// seleccion color pez
 if (irandom_range(0,1000) == 1) {
     image_index = 6;
 }
@@ -39,6 +40,13 @@ else
     image_index = irandom_range(0,5);
 }
 image_speed = 0;
+
+/*
+velx = 0;
+vely = 0;
+posx = 0;
+posy = 0;
+//En la posición que tiene inicial inicia el movimiento con una velocidad
 
 if (x &lt; 0){
     phy_speed_x = irandom_range(8 + puntaje/10,10 + puntaje/10); //Cambiar de acuerdo a puntaje
@@ -70,7 +78,19 @@ phy_speed_y = irandom_range(-15 - puntaje/10,-10 - puntaje/10);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>phy_active = true;
+            <string>// movimiento pez
+if (pst_x &lt; 0){
+    set_movement_direction_speed(45,irandom_range(18 + puntaje/10,20 + puntaje/10));
+    alarm[1] = -1;
+}
+else{
+    set_movement_direction_speed(135,irandom_range(18 + puntaje/10,20 + puntaje/10));
+    image_xscale = -1;
+    alarm[1] = -1;
+}
+
+/*
+phy_active = true;
 phy_speed_x = velx;
 phy_speed_y = vely;
 </string>
@@ -118,7 +138,9 @@ phy_speed_y = vely;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(congelar){
+            <string>move_movement_entity(); //funcion control de movimiento
+/*
+if(congelar){
     if (phy_speed_x != 0){
         show_debug_message("CONGELADO");
         phy_active = false;
@@ -161,12 +183,11 @@ phy_speed_y = vely;
     puntaje++; // Aumenta el puntaje en 1.
     // Hacer que el pez se voltee y caiga hacia abajo en linea recta
     if(image_xscale == -1){
-        phy_rotation = 270;
+        image_angle = 90;
     }else{
-        phy_rotation = 90;
+        image_angle = 270;
     }
-    phy_speed_x = 0
-    phy_speed_y = 8
+    set_movement_direction_speed(270,irandom_range(18 + puntaje/10,20 + puntaje/10));
     puntos = false;
     // Disparo.
     if(!mejora_arma){
@@ -250,7 +271,7 @@ instance_destroy();
       </action>
     </event>
   </events>
-  <PhysicsObject>-1</PhysicsObject>
+  <PhysicsObject>0</PhysicsObject>
   <PhysicsObjectSensor>0</PhysicsObjectSensor>
   <PhysicsObjectShape>0</PhysicsObjectShape>
   <PhysicsObjectDensity>0.5</PhysicsObjectDensity>
@@ -261,8 +282,5 @@ instance_destroy();
   <PhysicsObjectFriction>0.200000002980232</PhysicsObjectFriction>
   <PhysicsObjectAwake>-1</PhysicsObjectAwake>
   <PhysicsObjectKinematic>-1</PhysicsObjectKinematic>
-  <PhysicsShapePoints>
-    <point>0,0</point>
-    <point>38,38</point>
-  </PhysicsShapePoints>
+  <PhysicsShapePoints/>
 </object>

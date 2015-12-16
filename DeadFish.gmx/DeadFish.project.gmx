@@ -21,6 +21,7 @@
       <sprite>sprites\spr_hongo</sprite>
       <sprite>sprites\spr_gameover</sprite>
       <sprite>sprites\spr_salir</sprite>
+      <sprite>sprites\spr_gravedad</sprite>
     </sprites>
     <sprite>sprites\spr_continue</sprite>
     <sprite>sprites\spr_retry</sprite>
@@ -38,6 +39,12 @@
   <paths name="paths"/>
   <scripts name="scripts">
     <script>scripts\src_trans.gml</script>
+    <scripts name="Mover">
+      <script>scripts\approach.gml</script>
+      <script>scripts\move_movement_entity.gml</script>
+      <script>scripts\set_movement_direction_speed.gml</script>
+      <script>scripts\initialize_movement_entity.gml</script>
+    </scripts>
   </scripts>
   <fonts name="fonts">
     <font>fonts\font_juego_35</font>
@@ -51,6 +58,7 @@
       <object>objects\obj_fadeout</object>
       <object>objects\obj_control_game</object>
       <object>objects\obj_Facebook_Init</object>
+      <object>objects\obj_gravedad</object>
     </objects>
     <object>objects\obj_montana</object>
     <object>objects\obj_agua</object>
