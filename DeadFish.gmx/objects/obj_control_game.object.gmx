@@ -130,7 +130,7 @@
           <argument>
             <kind>1</kind>
             <string>with(obj_generar_peces){
-    alarm[0]=30
+    alarm[0]=1
 }
 congelar = false;
 </string>

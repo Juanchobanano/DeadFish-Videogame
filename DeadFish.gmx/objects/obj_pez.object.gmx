@@ -26,6 +26,9 @@
           <argument>
             <kind>1</kind>
             <string>puntos = true;
+angulo = 0;
+velocidad = 0;
+no_congelado = false;
 
 // Movimiento
 pst_x = x; //guarda posicion inicial x
@@ -79,15 +82,23 @@ phy_speed_y = irandom_range(-15 - puntaje/10,-10 - puntaje/10);
           <argument>
             <kind>1</kind>
             <string>// movimiento pez
+        with(obj_control_game){
+            alarm[1] = 120;
+            }
 if (pst_x &lt; 0){
-    set_movement_direction_speed(45,irandom_range(18 + puntaje/10,20 + puntaje/10));
+    angulo = 45;
+    velocidad = irandom_range(18 + puntaje/10,20 + puntaje/10);
     alarm[1] = -1;
 }
 else{
-    set_movement_direction_speed(135,irandom_range(18 + puntaje/10,20 + puntaje/10));
+    angulo = 135;
+    velocidad = irandom_range(18 + puntaje/10,20 + puntaje/10);
     image_xscale = -1;
     alarm[1] = -1;
 }
+
+    set_movement_direction_speed(angulo, velocidad);
+
 
 /*
 phy_active = true;
@@ -138,22 +149,20 @@ phy_speed_y = vely;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>move_movement_entity(); //funcion control de movimiento
-/*
-if(congelar){
-    if (phy_speed_x != 0){
-        show_debug_message("CONGELADO");
-        phy_active = false;
-        velx = phy_speed_x;
-        vely = phy_speed_y;
-        phy_speed_x = 0;
-        phy_speed_y = 0;
-        alarm[1] = 120;
-        with(obj_control_game){
-            alarm[1] = 120;
-        }
-    }
+            <string>if(congelar){
+    set_movement_direction_speed(45,0);
+    alarm[1] = 120;
+    no_congelado = true;
 }
+else{
+    if(no_congelado){
+    set_movement_direction_speed(angulo, velocidad);
+    no_congelado = false;
+   }
+}
+
+move_movement_entity(); //funcion control de movimiento
+
 </string>
           </argument>
         </arguments>
@@ -176,18 +185,17 @@ if(congelar){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(puntos){
-    if(congelar){
-        phy_active = true;
-    }
+            <string>if (room == Room_Game){
+if(puntos){
     puntaje++; // Aumenta el puntaje en 1.
     // Hacer que el pez se voltee y caiga hacia abajo en linea recta
+    angulo = 270; // se da el angulo de caida del pez
     if(image_xscale == -1){
         image_angle = 90;
     }else{
         image_angle = 270;
     }
-    set_movement_direction_speed(270,irandom_range(18 + puntaje/10,20 + puntaje/10));
+    set_movement_direction_speed(angulo,velocidad);
     puntos = false;
     // Disparo.
     if(!mejora_arma){
@@ -198,6 +206,7 @@ if(congelar){
             audio_play_sound(sound_weapon,1,0);
         }
     }
+}
 }
 </string>
           </argument>
@@ -221,7 +230,8 @@ if(congelar){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(puntos){
+            <string>if (room ==Room_Game){
+if(puntos){
     with(obj_generar_peces){
         alarm[0] = -1;
     }
@@ -239,6 +249,7 @@ if(congelar){
     instance_create(room_width/2 - sprite_get_width(spr_gameover)/2,290,obj_gameover);
     
     alarm[0] = 15;
+}
 }
 instance_destroy();
 </string>

@@ -53,6 +53,7 @@
   <instances>
     <instance objName="obj_press" x="147" y="332" name="inst_65A65EF6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_fadein" x="18" y="16" name="inst_4A4E9D0E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_generar_peces" x="43" y="23" name="inst_5D8C6BFA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>
