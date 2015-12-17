@@ -45,7 +45,10 @@
     <background>background\background_final</background>
     <background>background\background_boss</background>
   </backgrounds>
-  <paths name="paths"/>
+  <paths name="paths">
+    <path>paths\pth_boss</path>
+    <path>paths\pth_boss2</path>
+  </paths>
   <scripts name="scripts">
     <script>scripts\src_trans.gml</script>
     <scripts name="Mover">
@@ -78,8 +81,10 @@
     <object>objects\obj_retry</object>
     <object>objects\obj_continue</object>
     <object>objects\obj_gameover</object>
+    <object>objects\obj_pez_boss</object>
     <object>objects\obj_facebook</object>
     <object>objects\obj_twitter</object>
+    <object>objects\obj_hongo</object>
     <object>objects\obj_new</object>
     <objects name="Opciones">
       <object>objects\obj_arma</object>
