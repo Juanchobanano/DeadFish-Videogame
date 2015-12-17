@@ -27,8 +27,10 @@
             <kind>1</kind>
             <string>if(room == Room_Presentation){
     globalvar best_puntaje, puntaje, vidas, municion, mejora_arma, tiempo, idioma, 
-              pausa, congelar, pausar_musica, pausar_juego, new, purchaseMap, valores;
+              pausa, congelar, pausar_musica, pausar_juego, new, valores,
+              perder;
               
+    perder = 0;
     new = 0;
     pausar_musica = 0;
     pausar_juego = 0;
@@ -61,21 +63,16 @@
         idioma = ini_read_real("idioma","pass",0);
         ini_close();
     }
-    
-    valores = ds_list_create();
-    purchaseMap = ds_map_create();
-    if(file_exists(working_directory + 'iap_data.json')){
-        global.purchaseMap = ds_map_secure_load("iap_data.json");
-        // Cargue los productos comprados.
-        if(ds_map_exists(global.purchaseMap,"valores")){
-            var str = ds_map_find_value(global.purchaseMap,"valores");
-            ds_list_read(valores,str);
-        }
+
+    if(file_exists(working_directory + 'tienda.sav')){
+        ini_open(working_directory + 'tienda.sav');
+        // Cargue Valores.
+        tiempo = ini_read_real("tiempo","KIREOJ5E2",0);
+        vidas = ini_read_real("vidas","kjhwep235",0);
+        municion = ini_read_real("municion","5i92ghjr3YHY",0);
+        ini_close();
     }
-    
-    
-    
-    
+  
    // Cargar y Activar los productos.   
    var productList = ds_list_create();
   
@@ -309,15 +306,14 @@ switch(val){
    break;
 }
 
-// Modifique el arreglo.
-ds_list_replace(valores,0,tiempo);
-ds_list_replace(valores,1,vidas);
-ds_list_replace(valores,2,municion);
-
-// Guardar datos.
-if(file_exists("iap_data.json")){ file_delete("iap_data.json"); }
-ds_map_add(global.purchaseMap,"valores",ds_list_write(valores));
-ds_map_secure_save(global.purchaseMap, "iap_data.json");
+if(file_exists(working_directory + 'tienda.sav')){
+    file_delete(working_directory + 'tienda.sav');
+}
+ini_open(working_directory + 'tienda.sav');
+ini_write_real("tiempo","KIREOJ5E2",tiempo);
+ini_write_real("vidas","kjhwep235",vidas);
+ini_write_real("municion","5i92ghjr3YHY",municion);
+ini_close();
 </string>
           </argument>
         </arguments>
@@ -340,15 +336,14 @@ ds_map_secure_save(global.purchaseMap, "iap_data.json");
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// Modifique el arreglo.
-ds_list_replace(valores,0,tiempo);
-ds_list_replace(valores,1,vidas);
-ds_list_replace(valores,2,municion);
-
-// Guardar datos.
-if(file_exists("iap_data.json")){ file_delete("iap_data.json"); }
-ds_map_add(global.purchaseMap,"valores",ds_list_write(valores));
-ds_map_secure_save(global.purchaseMap, "iap_data.json");
+            <string>if(file_exists(working_directory + 'tienda.sav')){
+    file_delete(working_directory + 'tienda.sav');
+}
+ini_open(working_directory + 'tienda.sav');
+ini_write_real("tiempo","KIREOJ5E2",tiempo);
+ini_write_real("vidas","kjhwep235",vidas);
+ini_write_real("municion","5i92ghjr3YHY",municion);
+ini_close();
 </string>
           </argument>
         </arguments>

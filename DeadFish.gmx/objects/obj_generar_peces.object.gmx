@@ -54,11 +54,13 @@ contar = 0; // Empezar la transicion.
             <string>// Transición.
 if(background_index[0] = background_juego){
     background_index[0] = background_boss;
+    with(obj_agua){ image_index = 1; }
 }else if(background_index[0] = background_boss){
     background_index[0] = background_juego;
+    with(obj_agua){ image_index = 0; }
 }
 if(vel &gt;= 5){
-    vel -= 5;
+    vel -= 1;
     alarm[1] = vel;
 }else{  
     background_index[0] = background_boss;
@@ -112,10 +114,13 @@ if instance_number(obj_pez) &lt; 8{
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(puntaje &gt;= 90 and !contar){
+            <string>if(puntaje == 3 and !contar){
     alarm[1] = 30; contar = 1;
-}else if(puntaje &gt;= 100){
-    
+}else if(puntaje == 5){
+    alarm[0] = -1 // Que paren de salir peces.
+    if(!instance_exists(obj_pez_boss)){
+        instance_create(-145,206,obj_pez_boss);
+    }
 }
 if(congelar){
     alarm[0] = -1;

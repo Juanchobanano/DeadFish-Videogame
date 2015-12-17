@@ -35,13 +35,13 @@ pst_x = x; //guarda posicion inicial x
     initialize_movement_entity(.5, 1, .125, .25,obj_gravedad); //Inicializa los parametros de movimiento
 alarm[1] = 1;
 // seleccion color pez
-if (irandom_range(0,1000) == 1) {
+/*if (irandom_range(0,1000) == 1) {
     image_index = 6;
 }
 else
-{
-    image_index = irandom_range(0,5);
-}
+{*/
+    image_index = irandom_range(0,6);
+//}
 image_speed = 0;
 
 /*
@@ -60,6 +60,48 @@ else{
 }
 phy_speed_y = irandom_range(-15 - puntaje/10,-10 - puntaje/10);
 </string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="1" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>532</id>
+        <kind>0</kind>
+        <userelative>-1</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_effect</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>4</kind>
+            <string>3</string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string>x</string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string>y</string>
+          </argument>
+          <argument>
+            <kind>4</kind>
+            <string>1</string>
+          </argument>
+          <argument>
+            <kind>13</kind>
+            <string>8454143</string>
+          </argument>
+          <argument>
+            <kind>4</kind>
+            <string>0</string>
           </argument>
         </arguments>
       </action>
@@ -156,16 +198,103 @@ phy_speed_y = vely;
 }
 else{
     if(no_congelado){
-    set_movement_direction_speed(angulo, velocidad);
-    no_congelado = false;
-   }
+        set_movement_direction_speed(angulo, velocidad);
+        no_congelado = false;
+    }
 }
 
 move_movement_entity(); //funcion control de movimiento
-
 </string>
           </argument>
         </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>408</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>-1</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_if</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>0</kind>
+            <string>puntos &amp;&amp; image_index == 6</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>422</id>
+        <kind>1</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>0</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>532</id>
+        <kind>0</kind>
+        <userelative>-1</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_effect</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>4</kind>
+            <string>4</string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string>x</string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string>y</string>
+          </argument>
+          <argument>
+            <kind>4</kind>
+            <string>1</string>
+          </argument>
+          <argument>
+            <kind>13</kind>
+            <string>8454143</string>
+          </argument>
+          <argument>
+            <kind>4</kind>
+            <string>0</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>424</id>
+        <kind>2</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>0</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
       </action>
     </event>
     <event eventtype="6" enumb="4">
@@ -186,7 +315,8 @@ move_movement_entity(); //funcion control de movimiento
           <argument>
             <kind>1</kind>
             <string>if (room == Room_Game){
-if(puntos){
+if(puntos and !perder){
+    instance_create(x, self.y - sprite_get_height(spr_peces)/2, obj_mas1);
     puntaje++; // Aumenta el puntaje en 1.
     // Hacer que el pez se voltee y caiga hacia abajo en linea recta
     angulo = 270; // se da el angulo de caida del pez
@@ -195,8 +325,27 @@ if(puntos){
     }else{
         image_angle = 270;
     }
-    set_movement_direction_speed(angulo,velocidad);
     puntos = false;
+    
+    // Pez sorpresa!
+    if(image_index == 6){
+        // Elegir una bonificación.
+        switch(choose("tiros","vidas","tiempo")){
+            case "tiros":
+                municion += 20;
+            break;
+            case "vidas":
+                vidas += 2;
+            break;
+            case "tiempo":
+                tiempo += 2;
+            break;
+        }
+        instance_destroy();
+    }else{
+        set_movement_direction_speed(angulo,velocidad);    
+    }
+    
     // Disparo.
     if(!mejora_arma){
         audio_play_sound(sound_weapon,1,0);
@@ -235,6 +384,7 @@ if(puntos){
     with(obj_generar_peces){
         alarm[0] = -1;
     }
+    perder = 1;
     puntos = false;
     if(puntaje &gt; best_puntaje){
         best_puntaje = puntaje; new = 1;
