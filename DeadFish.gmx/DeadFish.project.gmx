@@ -69,7 +69,6 @@
     <font>fonts\font_juego_15</font>
   </fonts>
   <objects name="objects">
-    <object>objects\obj_congelar</object>
     <objects name="Control">
       <object>objects\obj_fadein</object>
       <object>objects\obj_generar_peces</object>

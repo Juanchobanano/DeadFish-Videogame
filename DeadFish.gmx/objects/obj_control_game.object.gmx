@@ -28,10 +28,11 @@
             <string>if(room == Room_Presentation){
     globalvar best_puntaje, puntaje, vidas, municion, mejora_arma, tiempo, idioma, 
               pausa, congelar, pausar_musica, pausar_juego, new, valores,
-              perder;
+              perder, disparos;
               
     perder = 0;
     new = 0;
+    disparos = 0;
     pausar_musica = 0;
     pausar_juego = 0;
     idioma = "es";
@@ -43,8 +44,6 @@
     municion = 0; // Cuanta municion tiene del arma mejorada.
     
     tiempo = 0; // Cuantas paradas de tiempo tiene.
-    
-    pausa = false; //Indica si se está en pausa
     
     congelar = false; //Indica si está utilizando una parada de tiempo
     
@@ -129,7 +128,9 @@
             <string>with(obj_generar_peces){
     alarm[0]=1
 }
-congelar = false;
+if(!pausar_juego) {
+    congelar = false;
+}
 </string>
           </argument>
         </arguments>
