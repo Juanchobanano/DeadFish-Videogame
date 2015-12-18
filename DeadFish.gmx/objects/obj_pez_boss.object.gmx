@@ -58,7 +58,7 @@ cont = 1;
 }
 else {
     alarm[0] = -1;
-    path_start(pth_boss2,10,0,1);
+    path_start(pth_boss2,5,0,1);
     sprite_index = spr_pez_boss_g;
     image_xscale = 1;
     image_yscale = 1;
@@ -100,6 +100,8 @@ if(crear_hongo){
         crear_hongo = false;
     }
 }
+
+path_speed = irandom_range(5,10);
 </string>
           </argument>
         </arguments>

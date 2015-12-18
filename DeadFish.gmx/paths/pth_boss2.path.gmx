@@ -6,35 +6,27 @@
   <hsnap>16</hsnap>
   <vsnap>16</vsnap>
   <points>
-    <point>240,515,100</point>
-    <point>240,720,100</point>
-    <point>240,608,100</point>
-    <point>240,496,100</point>
-    <point>176,432,100</point>
-    <point>32,352,100</point>
-    <point>-192,288,100</point>
-    <point>-48,192,100</point>
-    <point>96,144,100</point>
-    <point>256,112,100</point>
-    <point>400,128,100</point>
-    <point>480,160,100</point>
-    <point>672,224,100</point>
-    <point>672,688,100</point>
-    <point>480,592,100</point>
-    <point>416,464,100</point>
-    <point>336,400,100</point>
-    <point>256,368,100</point>
-    <point>128,352,100</point>
-    <point>32,368,100</point>
-    <point>-176,448,100</point>
-    <point>-192,624,100</point>
-    <point>32,592,100</point>
-    <point>96,464,100</point>
-    <point>224,352,100</point>
-    <point>272,304,100</point>
-    <point>352,288,100</point>
-    <point>432,288,100</point>
-    <point>672,352,100</point>
-    <point>672,448,100</point>
+    <point>224,608,100</point>
+    <point>224,768,100</point>
+    <point>352,768,100</point>
+    <point>416,608,100</point>
+    <point>224,512,100</point>
+    <point>48,528,100</point>
+    <point>-160,496,100</point>
+    <point>16,352,100</point>
+    <point>144,288,100</point>
+    <point>304,320,100</point>
+    <point>368,448,100</point>
+    <point>448,528,100</point>
+    <point>592,496,100</point>
+    <point>656,384,100</point>
+    <point>672,320,100</point>
+    <point>576,272,100</point>
+    <point>416,192,100</point>
+    <point>320,112,100</point>
+    <point>208,176,100</point>
+    <point>64,144,100</point>
+    <point>-64,240,100</point>
+    <point>-176,208,100</point>
   </points>
 </path>

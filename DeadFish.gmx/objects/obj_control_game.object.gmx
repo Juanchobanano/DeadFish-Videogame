@@ -71,6 +71,9 @@
         municion = ini_read_real("municion","5i92ghjr3YHY",0);
         ini_close();
     }
+    if(municion &gt; 0){
+        mejora_arma = true;
+    }
   
    // Cargar y Activar los productos.   
    var productList = ds_list_create();
