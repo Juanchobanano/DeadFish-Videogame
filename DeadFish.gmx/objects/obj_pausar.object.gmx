@@ -58,6 +58,7 @@ image_speed = 0;
         congelar = 1;
         pausar_juego = true;
         image_index = 1;
+
     } else if(pausar_juego) {
         if(!instance_exists(obj_pez_boss)){
             with(obj_generar_peces){
@@ -93,9 +94,11 @@ image_speed = 0;
             <kind>1</kind>
             <string>draw_self();
 if(pausar_juego and !shop){
-    draw_set_alpha(0.5);
     draw_sprite(spr_gamepaused,0,room_width/2,room_height/2);
-    draw_set_alpha(1);
+}
+
+if(pausar_juego or shop){
+    draw_sprite(spr_fondo_pausa,0,0,0);
 }
 </string>
           </argument>

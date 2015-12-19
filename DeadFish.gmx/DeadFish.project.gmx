@@ -43,6 +43,8 @@
     <sprite>sprites\spr_mas1</sprite>
     <sprite>sprites\spr_barra_vida</sprite>
     <sprite>sprites\spr_shop</sprite>
+    <sprite>sprites\spr_icono</sprite>
+    <sprite>sprites\spr_fondo_pausa</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background_pres</background>

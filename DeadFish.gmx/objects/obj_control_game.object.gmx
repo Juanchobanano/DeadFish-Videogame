@@ -50,6 +50,9 @@
     
     instance_create(0,0,obj_Facebook_Init);
     
+    // LOCAL
+    comprar = 0;
+    
     // Cargar Datos.
     if(file_exists(working_directory + "best_score.sav")){
         ini_open(working_directory + "best_score.sav");
