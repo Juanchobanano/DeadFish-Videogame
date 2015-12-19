@@ -25,7 +25,15 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>crear_hongo = true;
+            <string>puntos = true;
+no_congelado = false;
+despausado = false;
+cont_salidas = 0;
+with(obj_generar_peces){alarm[1] = 1;}
+pez_grande = false;
+vida_max = 40;
+vida = vida_max;
+crear_hongo = true;
 path_start(pth_boss,10,0,1);
 cont = 1;
 </string>
@@ -62,6 +70,7 @@ else {
     sprite_index = spr_pez_boss_g;
     image_xscale = 1;
     image_yscale = 1;
+    pez_grande = true;
 }
 </string>
           </argument>
@@ -101,7 +110,111 @@ if(crear_hongo){
     }
 }
 
-path_speed = irandom_range(5,10);
+//path_speed = irandom_range(5,10);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="6" enumb="4">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if (pez_grande){
+vida -= 1;
+    if (vida &lt;= 0){ 
+        if(puntos and !perder and !pausar_juego){
+            instance_create(x, self.y - sprite_get_height(spr_peces)/2, obj_mas1);
+            puntaje++; // Aumenta el puntaje en 1.
+            puntos = false;
+            instance_destroy();
+            background_index[0] = background_juego;
+            with(obj_agua){ image_index = 0; }
+            with(obj_generar_peces){
+            alarm[0] = 30;            
+            }
+            // Disparo.
+            if(!mejora_arma){
+                audio_play_sound(sound_weapon,1,0);
+                mouse_clear(mb_left);
+            }else{
+                if(municion &gt; 0){
+                    disparos++;
+                    municion--;
+                }else{
+                    mejora_arma = 0;
+                }
+                
+                if(disparos &gt;= 4){
+                    disparos = 0;
+                    mouse_clear(mb_left);
+                }
+                               
+                audio_play_sound(sound_weapon,1,0);
+            }
+        }
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>cont_salidas += 1;
+show_debug_message(string(cont_salidas));
+if (cont_salidas == 3){
+show_debug_message("pene");
+if(puntos){
+show_debug_message("pene2");
+    perder = 1;
+    puntos = false;
+    if(puntaje &gt; best_puntaje){
+        best_puntaje = puntaje; new = 1;
+        if(file_exists(working_directory + "best_score.sav")){
+            file_delete(working_directory + "best_score.sav");
+        }
+        
+        ini_open(working_directory + "best_score.sav");
+        ini_write_real("best","pass",puntaje);
+        ini_close();
+    }
+    instance_create(room_width/2 - sprite_get_width(spr_gameover)/2,290,obj_gameover);
+    
+    alarm[0] = 15;
+}
+instance_destroy();
+}
+
 </string>
           </argument>
         </arguments>
@@ -125,7 +238,12 @@ path_speed = irandom_range(5,10);
           <argument>
             <kind>1</kind>
             <string>draw_self();
-
+var largo = 120;
+var ancho = 16;
+hp = (vida/vida_max)*100;
+if (pez_grande){
+draw_healthbar(x-largo/2,(y-120)-ancho/2,x+largo/2,(y-120)+ancho/2,hp,c_black,c_red,c_green,0,true,true);
+}
 </string>
           </argument>
         </arguments>

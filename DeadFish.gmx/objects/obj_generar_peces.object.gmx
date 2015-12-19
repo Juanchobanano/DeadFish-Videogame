@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>alarm[0] = 60;
 contador_peces = 0; //cuanta peces generados para aumentar dificultad
-vel = 30; // Velocidad de transición.
+vel = 20; // Velocidad de transición.
 contar = 0; // Empezar la transicion.
 </string>
           </argument>
@@ -117,7 +117,7 @@ if instance_number(obj_pez) &lt; 8{
             <kind>1</kind>
             <string>// Empezar a cambiar fondo.
 if(puntaje &gt; 0 and puntaje mod 10 = 0){
-    alarm[1] = 30;
+    //alarm[1] = 30;
     alarm[0] = -1;
     if(!instance_exists(obj_pez_boss)){
         instance_create(-145,206,obj_pez_boss);
