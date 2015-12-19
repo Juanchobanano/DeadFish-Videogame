@@ -213,8 +213,12 @@ if(crear_hongo){
         crear_hongo = false;
     }
 }
-
-path_speed = irandom_range(5,10);
+if(congelar) {
+    path_speed = 0;
+}
+else {
+    path_speed = irandom_range(5,10);
+}
 </string>
           </argument>
         </arguments>
