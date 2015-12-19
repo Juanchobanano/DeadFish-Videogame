@@ -320,16 +320,16 @@ if(puntos and !perder and !pausar_juego){
         mouse_clear(mb_left);
     }else{
         if(municion &gt; 0){
-            disparos++;
+            //disparos++;
             municion--;
         }else{
             mejora_arma = 0;
         }
         
-        if(disparos &gt;= 4){
-            disparos = 0;
-            mouse_clear(mb_left);
-        }
+        //if(disparos &gt;= 4){
+         //   disparos = 0;
+            //mouse_clear(mb_left);
+        //}
                        
         audio_play_sound(sound_weapon,1,0);
     }

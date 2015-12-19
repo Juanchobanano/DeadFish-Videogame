@@ -41,6 +41,111 @@ cont = 1;
         </arguments>
       </action>
     </event>
+    <event eventtype="1" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>532</id>
+        <kind>0</kind>
+        <userelative>-1</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_effect</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>4</kind>
+            <string>3</string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string>x</string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string>y</string>
+          </argument>
+          <argument>
+            <kind>4</kind>
+            <string>1</string>
+          </argument>
+          <argument>
+            <kind>13</kind>
+            <string>255</string>
+          </argument>
+          <argument>
+            <kind>4</kind>
+            <string>0</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>532</id>
+        <kind>0</kind>
+        <userelative>-1</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_effect</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>4</kind>
+            <string>0</string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string>x</string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string>y</string>
+          </argument>
+          <argument>
+            <kind>4</kind>
+            <string>1</string>
+          </argument>
+          <argument>
+            <kind>13</kind>
+            <string>65535</string>
+          </argument>
+          <argument>
+            <kind>4</kind>
+            <string>0</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>path_start(pth_boss2,5,0,1);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="2" enumb="0">
       <action>
         <libid>1</libid>
@@ -59,14 +164,13 @@ cont = 1;
           <argument>
             <kind>1</kind>
             <string>if (cont &lt;= 3){
-    alarm[0] = 10
+    alarm[0] = 10;
     image_xscale = image_xscale*1.45;
     image_yscale = image_yscale*1.45;
     cont += 1;
-}
-else {
+}else{
     alarm[0] = -1;
-    path_start(pth_boss2,5,0,1);
+    alarm[1] = 20; 
     sprite_index = spr_pez_boss_g;
     image_xscale = 1;
     image_yscale = 1;
@@ -105,12 +209,12 @@ else if (y &gt; 288){
 
 if(crear_hongo){
     if (x == 240 and y == 512){
-        instance_create(240,-16,obj_hongo);
+        instance_create(room_width/2 - sprite_get_width(spr_hongo)/4,-16,obj_hongo);
         crear_hongo = false;
     }
 }
 
-//path_speed = irandom_range(5,10);
+path_speed = irandom_range(5,10);
 </string>
           </argument>
         </arguments>
@@ -137,7 +241,7 @@ if(crear_hongo){
 vida -= 1;
     if (vida &lt;= 0){ 
         if(puntos and !perder and !pausar_juego){
-            instance_create(x, self.y - sprite_get_height(spr_peces)/2, obj_mas1);
+            instance_create(x, self.y - sprite_get_height(spr_pez_boss_g)/2, obj_mas1);
             puntaje++; // Aumenta el puntaje en 1.
             puntos = false;
             instance_destroy();
@@ -191,28 +295,25 @@ vida -= 1;
           <argument>
             <kind>1</kind>
             <string>cont_salidas += 1;
-show_debug_message(string(cont_salidas));
 if (cont_salidas == 3){
-show_debug_message("pene");
-if(puntos){
-show_debug_message("pene2");
-    perder = 1;
-    puntos = false;
-    if(puntaje &gt; best_puntaje){
-        best_puntaje = puntaje; new = 1;
-        if(file_exists(working_directory + "best_score.sav")){
-            file_delete(working_directory + "best_score.sav");
+    if(puntos){
+        perder = 1;
+        puntos = false;
+        if(puntaje &gt; best_puntaje){
+            best_puntaje = puntaje; new = 1;
+            if(file_exists(working_directory + "best_score.sav")){
+                file_delete(working_directory + "best_score.sav");
+            }
+            
+            ini_open(working_directory + "best_score.sav");
+            ini_write_real("best","pass",puntaje);
+            ini_close();
         }
+        instance_create(room_width/2 - sprite_get_width(spr_gameover)/2,290,obj_gameover);
         
-        ini_open(working_directory + "best_score.sav");
-        ini_write_real("best","pass",puntaje);
-        ini_close();
+        alarm[0] = 15;
     }
-    instance_create(room_width/2 - sprite_get_width(spr_gameover)/2,290,obj_gameover);
-    
-    alarm[0] = 15;
-}
-instance_destroy();
+    instance_destroy();
 }
 
 </string>

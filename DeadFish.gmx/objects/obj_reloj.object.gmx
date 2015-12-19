@@ -49,7 +49,7 @@
           <argument>
             <kind>1</kind>
             <string>if(congelar){
-    show_debug_message(descongelar);
+    //show_debug_message(descongelar);
     descongelar++;
     if(descongelar &gt;= 30*4){
         with(obj_control_game){

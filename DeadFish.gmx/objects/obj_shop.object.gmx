@@ -8,7 +8,7 @@
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
-    <event eventtype="2" enumb="0">
+    <event eventtype="6" enumb="4">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -25,7 +25,92 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_destroy();
+            <string>if(mouse_y &gt;= y + 106 and mouse_y &lt;= y + 308){
+    // Tiempo. 
+    if(mouse_x &gt;= x + 18 and mouse_x &lt;= x + 140){
+        var product = "deadfish_tiempo"; comprar = 1;
+    // Vidas.
+    }else if(mouse_x &gt;= x + 147 and mouse_x &lt;= x + 273){
+        var product = "deadfish_vidas"; comprar = 1;
+    // Arma
+    }else if(mouse_x &gt;= x + 282 and mouse_x &lt;= x + 402){
+        var product = "deadfish_arma"; comprar = 1;
+    }
+}
+
+if(comprar){
+    audio_play_sound(sound_click,1,0);
+    comprar = 0;
+    if(iap_status() == iap_status_available){
+       iap_acquire(product, ""); // Evento A.
+    }else{
+       if(idioma == "en"){
+          show_message_async("Store is not available.");
+       }else if(idioma == "es"){
+          show_message_async("La tienda no está disponible.");
+       }
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="66">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>var val = ds_map_find_value(iap_data, "type");
+switch(val){
+   case iap_ev_purchase:
+      var map = ds_map_create();
+      var purchase_id = ds_map_find_value(iap_data, "index");
+      iap_purchase_details(purchase_id, map);
+      if(ds_map_find_value(map, "status") == iap_purchased){
+          var product_id = ds_map_find_value(map, "product");
+          iap_consume(product_id);
+      }
+      ds_map_destroy(map);
+   break;
+   case iap_ev_consume:
+      var product_id = ds_map_find_value(map, "product");
+      if(ds_map_find_value(iap_data, "consumed")){
+        switch(product_id){
+            case "deadfish_vidas":
+                global.vidas += 10; // Aumentar la cantidad de vidas.
+            break;
+            case "deadfish_tiempo":
+                global.tiempo += 10; // Aumentar la cantidad de vidas.
+            break;
+            case "deadfish_arma":
+                global.municion += 200; // Aumentar la cantidad de vidas.
+            break;
+        }
+      }
+   break;
+}
+
+if(file_exists(working_directory + 'tienda.sav')){
+    file_delete(working_directory + 'tienda.sav');
+}
+ini_open(working_directory + 'tienda.sav');
+ini_write_real("tiempo","KIREOJ5E2",tiempo);
+ini_write_real("vidas","kjhwep235",vidas);
+ini_write_real("municion","5i92ghjr3YHY",municion);
+ini_close();
 </string>
           </argument>
         </arguments>
