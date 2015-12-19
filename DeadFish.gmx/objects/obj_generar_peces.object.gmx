@@ -51,7 +51,7 @@ contar = 0; // Empezar la transicion.
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// Transición.
+            <string>/// Transición.
 if(background_index[0] == background_juego){
     background_index[0] = background_boss;
     with(obj_agua){ image_index = 1; }
@@ -87,7 +87,8 @@ if(vel &gt;= 5){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>alarm[0] = irandom_range(15 - contador_peces/10,45 - contador_peces/10);
+            <string>/// Producir peces.
+alarm[0] = irandom_range(15 - contador_peces/10,45 - contador_peces/10);
 if instance_number(obj_pez) &lt; 8{
     instance_create(choose(-32,480),irandom_range(400,800),obj_pez);
     contador_peces +=1;
@@ -114,13 +115,16 @@ if instance_number(obj_pez) &lt; 8{
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(puntaje &gt; 0 and puntaje mod 10 = 0){
+            <string>// Empezar a cambiar fondo.
+if(puntaje &gt; 0 and puntaje mod 10 = 0){
     alarm[1] = 30;
     alarm[0] = -1;
     if(!instance_exists(obj_pez_boss)){
         instance_create(-145,206,obj_pez_boss);
     }
 }
+
+// Si congelar es true, parar la producción de peces.
 if(congelar){
     alarm[0] = -1;
 }

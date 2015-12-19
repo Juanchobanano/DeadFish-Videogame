@@ -128,10 +128,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>with(obj_generar_peces){
-    alarm[0]=1
+            <string>/// Llevar el Room_Menu
+with(obj_generar_peces){
+    alarm[0] = 1;
 }
-if(!pausar_juego) {
+if(!pausar_juego){
     congelar = false;
 }
 </string>
@@ -156,7 +157,8 @@ if(!pausar_juego) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>src_trans(Room_Menu);
+            <string>/// Llevar el Room_Menu
+src_trans(Room_Menu);
 </string>
           </argument>
         </arguments>

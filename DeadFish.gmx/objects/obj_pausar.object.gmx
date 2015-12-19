@@ -92,9 +92,7 @@ image_speed = 0;
             <kind>1</kind>
             <string>draw_self();
 if(pausar_juego){
-    draw_set_alpha(0.5);
-    draw_sprite(spr_gameover,0,room_width/2 - sprite_get_width(spr_gamepaused)/2,290);
-    draw_set_alpha(1);
+    draw_sprite(spr_gamepaused,0,room_width/2 - sprite_get_width(spr_gamepaused)/2,290);
 }
 </string>
           </argument>

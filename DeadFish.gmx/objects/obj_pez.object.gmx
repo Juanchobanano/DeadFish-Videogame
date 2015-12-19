@@ -33,8 +33,21 @@ despausado = false;
 
 // Movimiento
 pst_x = x; //guarda posicion inicial x
-    initialize_movement_entity(.5, 1, .125, .25,obj_gravedad); //Inicializa los parametros de movimiento
-alarm[1] = 1;
+initialize_movement_entity(.5, 1, .125, .25,obj_gravedad); //Inicializa los parametros de movimiento
+if(pst_x &lt; 0){
+    angulo = 45;
+    velocidad = irandom_range(18 + puntaje/10,20 + puntaje/10);
+    alarm[1] = -1;
+}
+else{
+    angulo = 135;
+    velocidad = irandom_range(18 + puntaje/10,20 + puntaje/10);
+    image_xscale = -1;
+    alarm[1] = -1;
+}
+set_movement_direction_speed(angulo, velocidad);
+
+
 // seleccion color pez
 if (irandom_range(0,1000) == 1) {
     image_index = 6;
@@ -107,51 +120,6 @@ phy_speed_y = irandom_range(-15 - puntaje/10,-10 - puntaje/10);
         </arguments>
       </action>
     </event>
-    <event eventtype="2" enumb="1">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>// movimiento pez
-/*with(obj_control_game){
-    alarm[1] = 120;
-}*/
-if (pst_x &lt; 0){
-    angulo = 45;
-    velocidad = irandom_range(18 + puntaje/10,20 + puntaje/10);
-    alarm[1] = -1;
-}
-else{
-    angulo = 135;
-    velocidad = irandom_range(18 + puntaje/10,20 + puntaje/10);
-    image_xscale = -1;
-    alarm[1] = -1;
-}
-
-    set_movement_direction_speed(angulo, velocidad);
-
-
-/*
-phy_active = true;
-phy_speed_x = velx;
-phy_speed_y = vely;
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
     <event eventtype="2" enumb="0">
       <action>
         <libid>1</libid>
@@ -194,9 +162,6 @@ phy_speed_y = vely;
             <kind>1</kind>
             <string>if(congelar){
     set_movement_direction_speed(45,0);
-    if(!pausar_juego){
-        alarm[1] = 120;
-    }
     no_congelado = true;
 }
 else{
@@ -205,15 +170,6 @@ else{
         no_congelado = false;
     }
 }
-
-/*if(pausar_juego){
-    set_movement_direction_speed(45,0);
-}
-else if(despausado){
-    alarm[1]=1;
-    despausado = false;
-}
-*/
 
 move_movement_entity(); //funcion control de movimiento
 </string>
