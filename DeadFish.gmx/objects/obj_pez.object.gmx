@@ -284,8 +284,10 @@ move_movement_entity(); //funcion control de movimiento
             <kind>1</kind>
             <string>if (room == Room_Game){
 if(puntos and !perder and !pausar_juego){
-    instance_create(x, self.y - sprite_get_height(spr_peces)/2, obj_mas1);
-    puntaje++; // Aumenta el puntaje en 1.
+    if (!instance_exists(obj_pez_boss)){
+        instance_create(x, self.y - sprite_get_height(spr_peces)/2, obj_mas1);
+        puntaje++; // Aumenta el puntaje en 1.
+    }
     // Hacer que el pez se voltee y caiga hacia abajo en linea recta
     angulo = 270; // se da el angulo de caida del pez
     if(image_xscale == -1){
