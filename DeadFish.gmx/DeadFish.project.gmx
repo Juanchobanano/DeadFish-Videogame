@@ -42,6 +42,7 @@
     <sprite>sprites\spr_titulo</sprite>
     <sprite>sprites\spr_mas1</sprite>
     <sprite>sprites\spr_barra_vida</sprite>
+    <sprite>sprites\spr_shop</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background_pres</background>
@@ -95,12 +96,13 @@
       <object>objects\obj_arma</object>
       <object>objects\obj_musica</object>
       <object>objects\obj_reloj</object>
-      <object>objects\obj_tienda</object>
       <object>objects\obj_pausar</object>
       <object>objects\obj_vida</object>
       <object>objects\obj_opciones</object>
+      <object>objects\obj_tienda</object>
     </objects>
     <object>objects\obj_titulo</object>
+    <object>objects\obj_shop</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\Room_Presentation</room>

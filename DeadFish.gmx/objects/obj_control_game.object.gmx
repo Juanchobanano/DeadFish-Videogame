@@ -28,10 +28,11 @@
             <string>if(room == Room_Presentation){
     globalvar best_puntaje, puntaje, vidas, municion, mejora_arma, tiempo, idioma, 
               pausa, congelar, pausar_musica, pausar_juego, new, valores,
-              perder, disparos;
+              perder, disparos, shop;
               
     perder = 0;
     new = 0;
+    shop = false;
     disparos = 0;
     pausar_musica = 0;
     pausar_juego = 0;

@@ -53,21 +53,22 @@ image_speed = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(!pausar_juego and !congelar){
-    congelar = 1;
-    pausar_juego = true;
-    image_index = 1;
-} else if(pausar_juego) {
-    /*if(!instance_exists(obj_pez)){*/
-        with(obj_generar_peces){
-            alarm[0] = 1;
+            <string>if(!perder) {
+    if(!pausar_juego and !congelar){
+        congelar = 1;
+        pausar_juego = true;
+        image_index = 1;
+    } else if(pausar_juego) {
+        if(!instance_exists(obj_pez_boss)){
+            with(obj_generar_peces){
+                alarm[0] = 1;
+            }
         }
-    //}
-    congelar = 0;
-    pausar_juego = false;
-    image_index = 0;
+        congelar = 0;
+        pausar_juego = false;
+        image_index = 0;
+    }
 }
-
 </string>
           </argument>
         </arguments>
@@ -91,8 +92,10 @@ image_speed = 0;
           <argument>
             <kind>1</kind>
             <string>draw_self();
-if(pausar_juego){
-    draw_sprite(spr_gamepaused,0,room_width/2 - sprite_get_width(spr_gamepaused)/2,290);
+if(pausar_juego and !shop){
+    draw_set_alpha(0.5);
+    draw_sprite(spr_gamepaused,0,room_width/2,room_height/2);
+    draw_set_alpha(1);
 }
 </string>
           </argument>
