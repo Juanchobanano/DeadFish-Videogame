@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(room == Room_Presentation){
+            <string>
+if(room == Room_Presentation){
     globalvar best_puntaje, puntaje, vidas, municion, mejora_arma, tiempo, idioma, 
               pausa, congelar, pausar_musica, pausar_juego, new, valores,
               perder, disparos, shop;
@@ -78,6 +79,8 @@
     if(municion &gt; 0){
         mejora_arma = true;
     }
+    
+    show_debug_message(mejora_arma);
   
    // Cargar y Activar los productos.   
    var productList = ds_list_create();

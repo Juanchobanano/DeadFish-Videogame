@@ -30,26 +30,29 @@ angulo = 0;
 velocidad = 0;
 no_congelado = false;
 despausado = false;
+angulo_sprite = 0;
 
 // Movimiento
 pst_x = x; //guarda posicion inicial x
 initialize_movement_entity(.5, 1, .125, .25,obj_gravedad); //Inicializa los parametros de movimiento
 if(pst_x &lt; 0){
-    angulo = 45;
-    velocidad = irandom_range(18 + puntaje/10,20 + puntaje/10);
-    alarm[1] = -1;
+    angulo = 45; // 60
+    image_angle = 45;
+    velocidad = irandom_range(18 + puntaje/100,20 + puntaje/100);
+    //alarm[1] = -1;
 }
 else{
-    angulo = 135;
-    velocidad = irandom_range(18 + puntaje/10,20 + puntaje/10);
+    angulo = 135; // 120
+    image_angle = -45;
+    velocidad = irandom_range(18 + puntaje/100,20 + puntaje/100);
     image_xscale = -1;
-    alarm[1] = -1;
+    //alarm[1] = -1;
 }
 set_movement_direction_speed(angulo, velocidad);
 
 
 // seleccion color pez
-if (irandom_range(0,1000) == 1) {
+if (irandom_range(1,100) == 1) {
     image_index = 6;
 }
 else
@@ -170,8 +173,18 @@ else{
         no_congelado = false;
     }
 }
-
 move_movement_entity(); //funcion control de movimiento
+if(puntos){ 
+    if(!congelar){
+        image_angle -= angulo_sprite;
+        if(image_xscale == 1){
+            angulo_sprite += .06;
+        }else{
+            angulo_sprite -= .06;
+        }
+    }
+}
+//show_debug_message(lengthdir_y(angulo,velocidad));
 </string>
           </argument>
         </arguments>
@@ -291,9 +304,11 @@ if(puntos and !perder and !pausar_juego){
     // Hacer que el pez se voltee y caiga hacia abajo en linea recta
     angulo = 270; // se da el angulo de caida del pez
     if(image_xscale == -1){
-        image_angle = 90;
+        image_angle = 180;
+        image_xscale = 1;
     }else{
-        image_angle = 270;
+        image_angle = -180;
+        image_xscale = -1;
     }
     puntos = false;
     
@@ -303,6 +318,7 @@ if(puntos and !perder and !pausar_juego){
         switch(choose("tiros","vidas","tiempo")){
             case "tiros":
                 municion += 20;
+                mejora_arma = true;
             break;
             case "vidas":
                 vidas += 2;
@@ -332,7 +348,7 @@ if(puntos and !perder and !pausar_juego){
          //   disparos = 0;
             //mouse_clear(mb_left);
         //}
-                       
+        audio_stop_sound(sound_weapon);
         audio_play_sound(sound_weapon,1,0);
     }
 }

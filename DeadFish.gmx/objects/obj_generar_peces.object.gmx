@@ -89,9 +89,9 @@ if(vel &gt;= 5){
             <kind>1</kind>
             <string>/// Producir peces.
 alarm[0] = irandom_range(15 - contador_peces/10,45 - contador_peces/10);
-if instance_number(obj_pez) &lt; 8{
-    instance_create(choose(-32,480),irandom_range(400,800),obj_pez);
-    contador_peces +=1;
+if(instance_number(obj_pez) &lt; 8){
+    instance_create(choose(-12,460),irandom_range(400,850),obj_pez);
+    contador_peces += 1;
 }
 </string>
           </argument>
@@ -116,7 +116,7 @@ if instance_number(obj_pez) &lt; 8{
           <argument>
             <kind>1</kind>
             <string>// Empezar a cambiar fondo.
-if(puntaje &gt; 0 and puntaje mod 10 = 0){
+if((puntaje == 100 or puntaje == 500 or puntaje == 1000)){
     //alarm[1] = 30;
     alarm[0] = -1;
     if(!instance_exists(obj_pez_boss)){
